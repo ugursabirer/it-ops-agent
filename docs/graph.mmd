@@ -1,0 +1,52 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	supervisor(supervisor)
+	greeting_agent(greeting_agent)
+	planner_agent(planner_agent)
+	policy_agent(policy_agent)
+	policy_tools(policy_tools)
+	ops_agent(ops_agent)
+	ops_tools(ops_tools)
+	decision_agent(decision_agent)
+	approval_gate(approval_gate)
+	invalid_tool(invalid_tool)
+	budget_guard(budget_guard)
+	action_tools(action_tools)
+	reporter_agent(reporter_agent)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> supervisor;
+	action_tools --> reporter_agent;
+	approval_gate -. &nbsp;aksiyon&nbsp; .-> action_tools;
+	approval_gate -. &nbsp;rapor&nbsp; .-> reporter_agent;
+	budget_guard -. &nbsp;bitir&nbsp; .-> __end__;
+	budget_guard -. &nbsp;karar&nbsp; .-> decision_agent;
+	budget_guard -. &nbsp;ops&nbsp; .-> ops_agent;
+	decision_agent -. &nbsp;onay&nbsp; .-> approval_gate;
+	decision_agent -. &nbsp;gecersiz&nbsp; .-> invalid_tool;
+	decision_agent -. &nbsp;rapor&nbsp; .-> reporter_agent;
+	invalid_tool --> reporter_agent;
+	ops_agent -. &nbsp;bitir&nbsp; .-> __end__;
+	ops_agent -. &nbsp;butce&nbsp; .-> budget_guard;
+	ops_agent -. &nbsp;devam&nbsp; .-> decision_agent;
+	ops_agent -. &nbsp;tools&nbsp; .-> ops_tools;
+	ops_tools --> ops_agent;
+	planner_agent --> policy_agent;
+	policy_agent -. &nbsp;bitir&nbsp; .-> __end__;
+	policy_agent -. &nbsp;butce&nbsp; .-> budget_guard;
+	policy_agent -. &nbsp;devam&nbsp; .-> ops_agent;
+	policy_agent -. &nbsp;tools&nbsp; .-> policy_tools;
+	policy_tools --> policy_agent;
+	supervisor -. &nbsp;selamlama&nbsp; .-> greeting_agent;
+	supervisor -. &nbsp;operasyon&nbsp; .-> ops_agent;
+	supervisor -. &nbsp;talep&nbsp; .-> planner_agent;
+	supervisor -. &nbsp;politika&nbsp; .-> policy_agent;
+	greeting_agent --> __end__;
+	reporter_agent --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

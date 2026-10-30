@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="786" height="336" viewBox="0 0 786 336" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
+<rect width="786" height="336" rx="10" fill="#11131a"/>
+<path d="M0 10 a10 10 0 0 1 10 -10 h766 a10 10 0 0 1 10 10 v24 h-786 z" fill="#1b1e27"/>
+<circle cx="20" cy="17" r="5.5" fill="#ff5f57"/>
+<circle cx="39" cy="17" r="5.5" fill="#febc2e"/>
+<circle cx="58" cy="17" r="5.5" fill="#28c840"/>
+<text x="78" y="22" fill="#8a93a6">python main.py --demo</text>
+<text x="18" y="65" fill="#3b4256" xml:space="preserve">========================================================================</text>
+<text x="18" y="84" fill="#d6dae3" xml:space="preserve"> Kurumsal BT Destek ve Operasyon Asistani</text>
+<text x="18" y="103" fill="#3b4256" xml:space="preserve">========================================================================</text>
+<text x="18" y="122" fill="#d6dae3" xml:space="preserve"> LLM              : qwen3.5:4b (Ollama, lokal)</text>
+<text x="18" y="141" fill="#d6dae3" xml:space="preserve"> Embedding        : qwen3-embedding:0.6b</text>
+<text x="18" y="160" fill="#d6dae3" xml:space="preserve"> Operasyon tool&#x27;u : MCP / stdio (ops_mcp/server.py)</text>
+<text x="18" y="179" fill="#d6dae3" xml:space="preserve">                    7 MCP tool yuklendi.</text>
+<text x="18" y="198" fill="#d6dae3" xml:space="preserve"> Politika tool&#x27;u  : FAISS RAG (2 vector store)</text>
+<text x="18" y="217" fill="#d6dae3" xml:space="preserve"> Yazma onayi      : kullanici onayi gerekli</text>
+<text x="18" y="236" fill="#3b4256" xml:space="preserve">------------------------------------------------------------------------</text>
+<text x="18" y="255" fill="#d6dae3" xml:space="preserve"> &#x27;cikis&#x27; = cik   |   &#x27;yeni&#x27; = konusmayi sifirla</text>
+<text x="18" y="274" fill="#3b4256" xml:space="preserve">========================================================================</text>
+<text x="18" y="312" fill="#3b4256" xml:space="preserve">========================================================================</text>
+</svg>

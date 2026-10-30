@@ -1,0 +1,112 @@
+[
+  {
+    "id": "politika-yenileme-suresi",
+    "gecti": true,
+    "kulvar": "politika",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 3.855992375058122,
+    "cevap": "Dizüstü bilgisayarlar normal şartlarda **36 ay (3 yıl)** kullanım sonunda yenilenir.\n\n**Kaynak:** donanim_yenileme_politikasi.md - Yenileme Döngüsü bölümü.\n\n*Not: Sürenin başlangıcı cihazın satın alma tarihidir.*"
+  },
+  {
+    "id": "politika-parola",
+    "gecti": true,
+    "kulvar": "politika",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 3.4129935828968883,
+    "cevap": "Kurumsal hesap parolaları en az **14 karakter** olmalıdır ve **90 günde bir** değiştirilmelidir.\n\nBu bilgiler Bilgi Güvenliği Politikası dokümanından \"Parola Kuralları\" bölümünden alınmıştır."
+  },
+  {
+    "id": "politika-usb",
+    "gecti": true,
+    "kulvar": "politika",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 3.5042370840674266,
+    "cevap": "USB bellek kullanımı **kapalıdır**.\n\n**Kaynak:** Bilgi Güvenliği Politikası / Taşınabilir Medya\n**Madde:** USB bellek kullanımı varsayılan olarak kapalıdır. İş gereksinimi olan çalışanlar için yönetici ve Bilgi Güvenliği onayıyla şifreli USB tahsis edilir."
+  },
+  {
+    "id": "operasyon-zimmet",
+    "gecti": true,
+    "kulvar": "operasyon",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 3.1272827920038253,
+    "cevap": "E-1003'un zimmetinde şu cihaz var:\n\n*   **Lenovo ThinkPad T14 (AST-5004)**\n    *   Tip: Dizüstü Bilgisayar\n    *   Satın Alma Tarihi: 2024-09-20\n    *   Yaşı: 25 ay\n    *   Garanti Durumu: Devam ediyor"
+  },
+  {
+    "id": "operasyon-yetki-yok",
+    "gecti": true,
+    "kulvar": "operasyon",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 2.803551458986476,
+    "cevap": "Mert Kaya'nin (E-1003) VPN veya herhangi bir BT erisim yetkisi kayitli degil."
+  },
+  {
+    "id": "operasyon-stok",
+    "gecti": true,
+    "kulvar": "operasyon",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 2.325293125002645,
+    "cevap": "Yedek dizüstü bilgisayar stokumuz şu modellerde:\n\n*   **Dell Latitude 5440:** 4 adet\n*   **MacBook Air M3:** 2 adet"
+  },
+  {
+    "id": "talep-istisna-uygun",
+    "gecti": true,
+    "kulvar": "talep",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 33.86949708301108,
+    "cevap": "Karar: uygun\n\nGerekce:\n- Politika kuralı: 36 ay dolmadan yenileme, son 6 ay içinde en az 2 adet tekrarlayan donanım arızası durumunda kabul edilir (garanti durumu etkilemez).\n- Çalışanın gerçek verisi: Mert Kaya'nın cihazı (AST-5004) 25 yaşında ve son 6 ayda 2 adet kapanma arızası (TKT-9001, TKT-9002) kaydedilmiştir.\n- Sonuç: Tekrarlayan arıza istisnası sağlanmıştır, cihaz yenilenme hakkına sahiptir.\n\nYapılan işlem:\n- Kullanıcı onayı verilmediği için talep açılmadı.\n\nSonraki adım:\n- Talep sürecini takip etmek veya kullanıcıya tekrar onay sormak."
+  },
+  {
+    "id": "talep-uygun-degil",
+    "gecti": true,
+    "kulvar": "talep",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 29.856878291931935,
+    "cevap": "Karar: Bilgi eksik\n\nGerekce:\n- Politika kuralı: Donanım Yenileme Politikası'na göre 36 ay dolmadan yenileme, sadece cihazın son 6 ayında en az 2 adet tekrarlayan arıza kaydı veya onarılamaz arıza gibi istisnai durumlarda kabul edilir.\n- Çalışanın gerçek verisi: Elif Demir (E-1002), mevcut cihazı AST-5003 (MacBook Air M2) 19 yaşında ve garanti durumu devam ediyor; ancak cihazın son 6 aydaki arıza geçmişi sorgulanmadı.\n- Kuralın bu veriyle nasıl sonuçlandığı: Tekrarlayan arıza istisnasının geçerli olup olmadığına karar vermek için cihazın arıza kayıtlarına ihtiyaç var, bu bilgi henüz toplanmamış.\n\nYapılan işlem:\n- Veri alınamadı (Cihazın son 6 aydaki arıza geçmişi sorgulanmadı).\n\nSonraki adım:\n- Elif Demir'in cihazının son 6 aydaki arıza kayıtlarını ve açık taleplerini kontrol et."
+  },
+  {
+    "id": "belirsiz-talep",
+    "gecti": true,
+    "kulvar": "talep",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 15.648195374989882,
+    "cevap": "Karar: Bilgi eksik\n\nGerekce: Yeni donanım talebi için çalışan kimliği (personel numarası veya adı) zorunludur ancak bu bilgi konuşma geçmişinde bulunmamaktadır; talep açma işlemi için çalışan kimliği ve mevcut cihaz durumu gibi operasyonel veriler alınmadığından karar verilememektedir.\n\nYapılan islem: Veri alinamadi, talebin aciligi veya onay durumu belirsizdir.\n\nSonraki adim: Lütfen talep sahibinin personel numarasını veya adını belirtiniz."
+  },
+  {
+    "id": "olmayan-calisan",
+    "gecti": true,
+    "kulvar": "operasyon",
+    "kulvar_ok": true,
+    "eksik": [],
+    "yasakli": [],
+    "hata": null,
+    "sure": 1.9397752499207854,
+    "cevap": "E-9999'ya zimmetli cihaz bulunamadi."
+  }
+]

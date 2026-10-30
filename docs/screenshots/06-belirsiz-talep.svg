@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="786" height="811" viewBox="0 0 786 811" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
+<rect width="786" height="811" rx="10" fill="#11131a"/>
+<path d="M0 10 a10 10 0 0 1 10 -10 h766 a10 10 0 0 1 10 10 v24 h-786 z" fill="#1b1e27"/>
+<circle cx="20" cy="17" r="5.5" fill="#ff5f57"/>
+<circle cx="39" cy="17" r="5.5" fill="#febc2e"/>
+<circle cx="58" cy="17" r="5.5" fill="#28c840"/>
+<text x="78" y="22" fill="#8a93a6">Senaryo 6</text>
+<text x="18" y="65" fill="#f0a73a" xml:space="preserve">SENARYO 6/6</text>
+<text x="18" y="84" fill="#ffffff" xml:space="preserve">Kullanici: Yeni bilgisayar istiyorum.</text>
+<text x="18" y="122" fill="#f0a73a" xml:space="preserve">[SUPERVISOR] kulvar: talep</text>
+<text x="18" y="141" fill="#58b6ff" xml:space="preserve">[AGENT] Planner Agent</text>
+<text x="18" y="160" fill="#c08bff" xml:space="preserve">[PLAN]</text>
+<text x="18" y="179" fill="#d6dae3" xml:space="preserve">  1. Yeni bilgisayar talebinin talep kategorisini ve öncelik/SLA kurallarını politikadan oku</text>
+<text x="18" y="198" fill="#d6dae3" xml:space="preserve">  2. Talep sahibinin kimliğini, zimmetli cihaz durumunu ve erişim yetkilerini operasyonel veriden</text>
+<text x="18" y="217" fill="#d6dae3" xml:space="preserve">  kontrol et</text>
+<text x="18" y="236" fill="#d6dae3" xml:space="preserve">  3. Cihazın mevcut yaşını ve son 6 aydaki arıza geçmişi ile donanım yenileme süresini karşılaştırarak</text>
+<text x="18" y="255" fill="#d6dae3" xml:space="preserve">  uygunluk kararı ver</text>
+<text x="18" y="274" fill="#d6dae3" xml:space="preserve">  4. Uygunsa yedek cihaz stok durumunu kontrol edip gerekirse yeni BT talebi aç</text>
+<text x="18" y="293" fill="#58b6ff" xml:space="preserve">[AGENT] Policy Agent (RAG)</text>
+<text x="18" y="312" fill="#d6dae3" xml:space="preserve">         -&gt; tool cagrisi: search_it_policy</text>
+<text x="18" y="331" fill="#4fd18b" xml:space="preserve">  [TOOL] search_it_policy(&#x27;yeni bilgisayar isteği talep kategorisi, öncelik ve çözüm süresi (SLA)</text>
+<text x="18" y="350" fill="#d6dae3" xml:space="preserve">  kuralları&#x27;)</text>
+<text x="18" y="369" fill="#58b6ff" xml:space="preserve">[AGENT] Policy Agent (RAG)</text>
+<text x="18" y="388" fill="#d6dae3" xml:space="preserve">         -&gt; Yeni bilgisayar talebiniz için politika kuralları şöyledir: * **Talep Kategorisi:** Yeni</text>
+<text x="18" y="407" fill="#d6dae3" xml:space="preserve">  donanım talepleri **&quot;talep / request&quot;** kategorisinde açılır. * **Öncelik ve SLA:** Bu kategoriye ait</text>
+<text x="18" y="426" fill="#d6dae3" xml:space="preserve">  yeni donanım talepleri **norm...</text>
+<text x="18" y="445" fill="#58b6ff" xml:space="preserve">[AGENT] Operations Agent (MCP)</text>
+<text x="18" y="464" fill="#d6dae3" xml:space="preserve">         -&gt; Yeni bilgisayar talebi için operasyonel verileri toplamak üzere, önce talep sahibinin</text>
+<text x="18" y="483" fill="#d6dae3" xml:space="preserve">  kimliğini belirlememiz gerekiyor. Ancak şu ana kadar yapılan sorgularda (sadece politika kontrolü)</text>
+<text x="18" y="502" fill="#d6dae3" xml:space="preserve">  talep sahibinin kimliği veya person...</text>
+<text x="18" y="521" fill="#58b6ff" xml:space="preserve">[AGENT] Decision Agent</text>
+<text x="18" y="540" fill="#d6dae3" xml:space="preserve">         -&gt; KARAR: BILGI EKSIK Talep sahibinin personel numarası (employee_id) veya çalışan kimliği</text>
+<text x="18" y="559" fill="#d6dae3" xml:space="preserve">  bilgisi sistemden alınmadığı için yeni bir BT talebi açılma kararı verilemez. Yeni bilgisayar talebi</text>
+<text x="18" y="578" fill="#d6dae3" xml:space="preserve">  için en azından talep sahibinin...</text>
+<text x="18" y="597" fill="#58b6ff" xml:space="preserve">[AGENT] Reporter Agent</text>
+<text x="18" y="635" fill="#9ae6b4" xml:space="preserve">Asistan: Karar: Bilgi eksik</text>
+<text x="18" y="673" fill="#d6dae3" xml:space="preserve">Gerekce: Yeni bilgisayar talebi için talep sahibinin kimliği (personel numarası veya isim) zorunludur</text>
+<text x="18" y="692" fill="#d6dae3" xml:space="preserve">  ancak bu bilgi konuşma geçmişinde bulunmamaktadır. Politika gereği aynı çalışan için açık bir talep</text>
+<text x="18" y="711" fill="#d6dae3" xml:space="preserve">  varsa güncellenir, aksi takdirde yeni talep açılmaz; eksik kimlik bilgisi nedeniyle karar verilemez.</text>
+<text x="18" y="749" fill="#d6dae3" xml:space="preserve">Yapılan işlem: Veri alınamadı (Talep sahibinin kimliği belirlenemedi).</text>
+<text x="18" y="787" fill="#d6dae3" xml:space="preserve">Sonraki adım: Lütfen personel numaranızı veya adınızı belirtiniz.</text>
+</svg>

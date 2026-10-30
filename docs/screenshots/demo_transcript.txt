@@ -1,0 +1,219 @@
+========================================================================
+ Kurumsal BT Destek ve Operasyon Asistani
+========================================================================
+ LLM              : qwen3.5:4b (Ollama, lokal)
+ Embedding        : qwen3-embedding:0.6b
+ Operasyon tool'u : MCP / stdio (ops_mcp/server.py)
+                    7 MCP tool yuklendi.
+ Politika tool'u  : FAISS RAG (2 vector store)
+ Yazma onayi      : kullanici onayi gerekli
+------------------------------------------------------------------------
+ 'cikis' = cik   |   'yeni' = konusmayi sifirla
+========================================================================
+
+========================================================================
+ SENARYO 1/6
+========================================================================
+Kullanici: Merhaba, sen neler yapabiliyorsun?
+
+[SUPERVISOR] kulvar: selamlama
+[AGENT] Greeting Agent
+
+Asistan: Merhaba! Ben kurumsal BT destek asistanınızım. Size şu konularda yardımcı olabilirim:
+
+*   **Politika Bilgisi:** Donanım yenileme, talep/SLA, lisans yönetimi, bilgi güvenliği ve VPN erişim politikalarınızı kaynak göstererek açıklayabilirim.
+*   **Durum Sorgulama:** Cihaz zimmet durumu, açık talepleriniz, yetkileriniz ve yedek cihaz stok bilgilerini sorgulayabilirim.
+*   **Talep Yönetimi:** Talebinizin politikaya uygunluğunu değerlendirip, onay sürecini takip ederek BT talebini açabilirim.
+
+Sizden hangi konuda bilgiye ihtiyacınız var?
+
+
+========================================================================
+ SENARYO 2/6
+========================================================================
+Kullanici: Dizustu bilgisayar kac yilda bir yenilenir?
+
+[SUPERVISOR] kulvar: politika
+[AGENT] Policy Agent (RAG)
+         -> tool cagrisi: search_it_policy
+  [TOOL] search_it_policy('dizüstü bilgisayar yenileme süresi')
+[AGENT] Policy Agent (RAG)
+         -> Dizüstü bilgisayarlar normal şartlarda **36 ay (3 yıl)** kullanım sonunda yenilenir. **Kaynak:** donanim_yenileme_politikasi.md - Yenileme Döngüsü bölümü. *Not: Sürenin başlangıcı cihazın satın alma tarihidir.*
+
+Asistan: Dizüstü bilgisayarlar normal şartlarda **36 ay (3 yıl)** kullanım sonunda yenilenir.
+
+**Kaynak:** donanim_yenileme_politikasi.md - Yenileme Döngüsü bölümü.
+
+*Not: Sürenin başlangıcı cihazın satın alma tarihidir.*
+
+
+========================================================================
+ SENARYO 3/6
+========================================================================
+Kullanici: E-1003'un zimmetindeki cihazlar neler?
+
+[SUPERVISOR] kulvar: operasyon
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: get_employee_assets
+  [MCP] get_employee_assets(employee_id='E-1003')
+[MCP TOOL] get_employee_assets(E-1003)
+[AGENT] Operations Agent (MCP)
+         -> E-1003'un zimmetinde şu cihaz var: * **Lenovo ThinkPad T14** (AST-5004) * Tip: Dizüstü Bilgisayar * Yaşı: 25 ay * Garanti Durumu: Devam ediyor
+
+Asistan: E-1003'un zimmetinde şu cihaz var:
+
+*   **Lenovo ThinkPad T14** (AST-5004)
+    *   Tip: Dizüstü Bilgisayar
+    *   Yaşı: 25 ay
+    *   Garanti Durumu: Devam ediyor
+
+
+========================================================================
+ SENARYO 4/6
+========================================================================
+Kullanici: Mert Kaya'nin laptopu surekli kapaniyor. Cihazini yenileme hakki var mi? Varsa gerekli BT talebini ac.
+
+[SUPERVISOR] kulvar: talep
+[AGENT] Planner Agent
+[PLAN]
+  1. Donanim yenileme suresini ve istisna kurallarini politikadan oku
+  2. Mert Kaya'nin calisan kaydi ve zimmetli cihaz bilgilerini operasyonel veriden bul
+  3. Cihazin yasini ve son 6 aydaki ariza gecmisi durumunu kontrol et
+  4. Politika kuralini cihazin durumuyla karstirip yenileme hakki varmi kararini ver
+  5. Hakki varsa yedek cihaz stogunu kontrol edip BT talebi ac
+[AGENT] Policy Agent (RAG)
+         -> tool cagrisi: search_it_policy
+  [TOOL] search_it_policy('donanim yenileme suresi ve istisnalar')
+[AGENT] Policy Agent (RAG)
+         -> Mert Kaya'nın cihaz yenileme hakkı için politika kuralları şöyledir: **Yenileme Süresi ve İstisnalar:** * Cihaz **36 aydan az** yaşında ise, yalnızca aşağıdaki durumlardan biri geçerliyse yenileme talep edilebilir: 1. So...
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: find_employee
+  [MCP] find_employee(query='Mert Kaya')
+[MCP TOOL] find_employee(Mert Kaya)
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: get_employee_assets
+  [MCP] get_employee_assets(employee_id='E-1003')
+[MCP TOOL] get_employee_assets(E-1003)
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: get_asset_failure_history
+  [MCP] get_asset_failure_history(asset_id='AST-5004', months=6)
+[MCP TOOL] get_asset_failure_history(AST-5004, months=6)
+[AGENT] Operations Agent (MCP)
+         -> Mert Kaya'nın (E-1003) cihaz yenileme hakkı için gerekli operasyonel veriler toplanmıştır: * **Cihaz Bilgisi:** AST-5004 (Lenovo ThinkPad T14), 25 yaşında, garanti durumu devam ediyor. * **Arıza Geçmişi:** Son 6 ayda top...
+[AGENT] Decision Agent
+         -> tool cagrisi: create_ticket
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ ONAY GEREKIYOR - asagidaki yazma islemi kullanici onayi bekliyor
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ Tool: create_ticket
+   employee_id     : E-1003
+   category        : talep
+   subject         : Mert Kaya için tekrarlayan donanım arızası nedeniyle cihaz yenileme talebi
+   priority        : normal
+   assigned_group  : BT-Donanim
+   asset_id        : AST-5004
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ Onayliyor musunuz? (onay / iptal): onay
+[ONAY] Kullanici onayladi, aksiyon uygulaniyor.
+  [MCP] create_ticket(employee_id='E-1003', category='talep', subject='Mert Kaya için tekrarlayan donanım arızası nedeniyle cihaz yenileme talebi', priority='normal', assigned_group='BT-Donanim', asset_id='AST-5004')
+[MCP TOOL] create_ticket(E-1003, talep, 'Mert Kaya için tekrarlayan donanım arızası nedeniyle cihaz yenileme talebi')
+[AGENT] Reporter Agent
+
+Asistan: Karar: uygun
+
+Gerekce:
+- Politika kuralı: Son 6 ay içinde en az 2 adet donanım arızası olması durumunda yenileme yapılabilir; Mert Kaya'nın cihazı (AST-5004) bu kriteri karşılıyor.
+- Çalışanın gerçek verisi: Cihaz yaşı 25 ay, son 6 ayda 2 adet arıza kaydı var (TKT-9001, TKT-9002).
+
+Yapılan işlem:
+- Talep açıldı: TKT-9006, kategori talep, öncelik normal, atanan grup BT-Donanim.
+
+Sonraki adım:
+- İşlem tamamlandı, talebi takip etmeniz yeterlidir.
+
+
+========================================================================
+ SENARYO 5/6
+========================================================================
+Kullanici: Elif Demir de yeni bir dizustu istiyor, onun hakki var mi?
+
+[SUPERVISOR] kulvar: talep
+[AGENT] Planner Agent
+[PLAN]
+  1. Dizüstü bilgisayar yenileme süresini ve istisna kurallarını Politika'dan oku
+  2. Elif Demir'in çalışan kaydını ve zimmetli cihaz durumunu Operasyonel Veri'den bul
+  3. Cihazın yaşını ve son 6 aydaki arıza geçmişi ile mevcut açık talepleri kontrol et
+  4. Politika kurallarıyla cihaz durumunu karşılaştırarak yenileme hakkı olup olmadığını belirle
+  5. Hakkı varsa yedek cihaz stokunu kontrol edip BT talebi aç
+[AGENT] Policy Agent (RAG)
+         -> tool cagrisi: search_it_policy
+  [TOOL] search_it_policy('cihaz yenileme süresi ve istisnalar')
+[AGENT] Policy Agent (RAG)
+         -> Elif Demir'in dizüstü bilgisayar yenileme hakkı, aşağıdaki kurallara göre değerlendirilir: * **Normal Yenileme Süresi:** Dizüstü bilgisayarlar **36 ay (3 yıl)** kullanım sonunda yenilenir. Bu süre cihazın satın alma tari...
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: find_employee
+  [MCP] find_employee(query='Elif Demir')
+[MCP TOOL] find_employee(Elif Demir)
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: get_employee_assets
+  [MCP] get_employee_assets(employee_id='E-1002')
+[MCP TOOL] get_employee_assets(E-1002)
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: get_asset_failure_history
+  [MCP] get_asset_failure_history(asset_id='AST-5003', months=6)
+[MCP TOOL] get_asset_failure_history(AST-5003, months=6)
+[AGENT] Operations Agent (MCP)
+         -> tool cagrisi: get_asset_failure_history
+  [MCP] get_asset_failure_history(asset_id='AST-5003', months=6)
+[MCP TOOL] get_asset_failure_history(AST-5003, months=6)
+[AGENT] Operations Agent (MCP)
+         -> Elif Demir (E-1002) için gereken operasyonel veriler toplanmıştır: * **Çalışan Kaydı:** Elif Demir, Finans departmanında Finans Uzmanı olarak görev yapmaktadır. * **Zimmetli Cihaz:** 1 adet dizüstü bilgisayar (AST-5003, ...
+[AGENT] Decision Agent
+         -> KARAR: UYGUN DEĞİL **Sebep:** Politika gereği dizüstü bilgisayarlar **36 ay** kullanımda yenilenir ancak Elif Demir'in cihazı (AST-5003) sadece **19 aydır**. Ayrıca, 36 ay dolmadan yenileme için "son 6 ayda en az 2 arıza...
+[AGENT] Reporter Agent
+
+Asistan: Karar: uygun değil
+
+Gerekçe:
+- Kural: Dizüstü bilgisayarlar **36 ay** kullanım sonunda yenilenir; istisnalar (son 6 ayda ≥2 arıza, onarılamaz rapor vb.) aranır.
+- Gerçek: Cihazın yaşı **19 ay**, son 6 ayda **0** arıza kaydı var ve rol değişikliği yok.
+
+Yapılan islem:
+- Talep açılmadı (politikaya uygun bulunmadığı için).
+
+Sonraki adım:
+- Elif Demir'e cihazın normal yenileme süresinin (36 ay) dolmasını beklemesi veya tekrarlayan arıza geçmişi oluşturması gerektiği bildirilmelidir.
+
+
+========================================================================
+ SENARYO 6/6
+========================================================================
+Kullanici: Yeni bilgisayar istiyorum.
+
+[SUPERVISOR] kulvar: talep
+[AGENT] Planner Agent
+[PLAN]
+  1. Yeni bilgisayar talebinin talep kategorisini ve öncelik/SLA kurallarını politikadan oku
+  2. Talep sahibinin kimliğini, zimmetli cihaz durumunu ve erişim yetkilerini operasyonel veriden kontrol et
+  3. Cihazın mevcut yaşını ve son 6 aydaki arıza geçmişi ile donanım yenileme süresini karşılaştırarak uygunluk kararı ver
+  4. Uygunsa yedek cihaz stok durumunu kontrol edip gerekirse yeni BT talebi aç
+[AGENT] Policy Agent (RAG)
+         -> tool cagrisi: search_it_policy
+  [TOOL] search_it_policy('yeni bilgisayar isteği talep kategorisi, öncelik ve çözüm süresi (SLA) kuralları')
+[AGENT] Policy Agent (RAG)
+         -> Yeni bilgisayar talebiniz için politika kuralları şöyledir: * **Talep Kategorisi:** Yeni donanım talepleri **"talep / request"** kategorisinde açılır. * **Öncelik ve SLA:** Bu kategoriye ait yeni donanım talepleri **norm...
+[AGENT] Operations Agent (MCP)
+         -> Yeni bilgisayar talebi için operasyonel verileri toplamak üzere, önce talep sahibinin kimliğini belirlememiz gerekiyor. Ancak şu ana kadar yapılan sorgularda (sadece politika kontrolü) talep sahibinin kimliği veya person...
+[AGENT] Decision Agent
+         -> KARAR: BILGI EKSIK Talep sahibinin personel numarası (employee_id) veya çalışan kimliği bilgisi sistemden alınmadığı için yeni bir BT talebi açılma kararı verilemez. Yeni bilgisayar talebi için en azından talep sahibinin...
+[AGENT] Reporter Agent
+
+Asistan: Karar: Bilgi eksik
+
+Gerekce: Yeni bilgisayar talebi için talep sahibinin kimliği (personel numarası veya isim) zorunludur ancak bu bilgi konuşma geçmişinde bulunmamaktadır. Politika gereği aynı çalışan için açık bir talep varsa güncellenir, aksi takdirde yeni talep açılmaz; eksik kimlik bilgisi nedeniyle karar verilemez.
+
+Yapılan işlem: Veri alınamadı (Talep sahibinin kimliği belirlenemedi).
+
+Sonraki adım: Lütfen personel numaranızı veya adınızı belirtiniz.
+

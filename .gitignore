@@ -1,0 +1,9 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+vector_db/
+*.db
+.DS_Store
+docs/screenshots/*.cast

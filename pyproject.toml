@@ -1,0 +1,24 @@
+[project]
+name = "it-ops-agent"
+version = "1.0.0"
+description = "Kurumsal BT destek ve operasyon asistani - Agentic AI Bootcamp kapanis projesi"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RET", "ARG", "PTH"]
+ignore = [
+    # The CLI and the tools deliberately catch broad exceptions: a tool error
+    # must reach the model as data, and the CLI must survive any failure.
+    "BLE001",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Path manipulation before imports is required so the MCP server and the
+# scripts can be run directly as files.
+"ops_mcp/server.py" = ["E402"]
+"scripts/*.py" = ["E402"]
+"eval/run_eval.py" = ["E402"]

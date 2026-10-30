@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="786" height="1400" viewBox="0 0 786 1400" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">
+<rect width="786" height="1400" rx="10" fill="#11131a"/>
+<path d="M0 10 a10 10 0 0 1 10 -10 h766 a10 10 0 0 1 10 10 v24 h-786 z" fill="#1b1e27"/>
+<circle cx="20" cy="17" r="5.5" fill="#ff5f57"/>
+<circle cx="39" cy="17" r="5.5" fill="#febc2e"/>
+<circle cx="58" cy="17" r="5.5" fill="#28c840"/>
+<text x="78" y="22" fill="#8a93a6">Senaryo 4</text>
+<text x="18" y="65" fill="#f0a73a" xml:space="preserve">SENARYO 4/6</text>
+<text x="18" y="84" fill="#ffffff" xml:space="preserve">Kullanici: Mert Kaya&#x27;nin laptopu surekli kapaniyor. Cihazini yenileme hakki var mi? Varsa gerekli BT</text>
+<text x="18" y="103" fill="#d6dae3" xml:space="preserve">  talebini ac.</text>
+<text x="18" y="141" fill="#f0a73a" xml:space="preserve">[SUPERVISOR] kulvar: talep</text>
+<text x="18" y="160" fill="#58b6ff" xml:space="preserve">[AGENT] Planner Agent</text>
+<text x="18" y="179" fill="#c08bff" xml:space="preserve">[PLAN]</text>
+<text x="18" y="198" fill="#d6dae3" xml:space="preserve">  1. Donanim yenileme suresini ve istisna kurallarini politikadan oku</text>
+<text x="18" y="217" fill="#d6dae3" xml:space="preserve">  2. Mert Kaya&#x27;nin calisan kaydi ve zimmetli cihaz bilgilerini operasyonel veriden bul</text>
+<text x="18" y="236" fill="#d6dae3" xml:space="preserve">  3. Cihazin yasini ve son 6 aydaki ariza gecmisi durumunu kontrol et</text>
+<text x="18" y="255" fill="#d6dae3" xml:space="preserve">  4. Politika kuralini cihazin durumuyla karstirip yenileme hakki varmi kararini ver</text>
+<text x="18" y="274" fill="#d6dae3" xml:space="preserve">  5. Hakki varsa yedek cihaz stogunu kontrol edip BT talebi ac</text>
+<text x="18" y="293" fill="#58b6ff" xml:space="preserve">[AGENT] Policy Agent (RAG)</text>
+<text x="18" y="312" fill="#d6dae3" xml:space="preserve">         -&gt; tool cagrisi: search_it_policy</text>
+<text x="18" y="331" fill="#4fd18b" xml:space="preserve">  [TOOL] search_it_policy(&#x27;donanim yenileme suresi ve istisnalar&#x27;)</text>
+<text x="18" y="350" fill="#58b6ff" xml:space="preserve">[AGENT] Policy Agent (RAG)</text>
+<text x="18" y="369" fill="#d6dae3" xml:space="preserve">         -&gt; Mert Kaya&#x27;nın cihaz yenileme hakkı için politika kuralları şöyledir: **Yenileme Süresi ve</text>
+<text x="18" y="388" fill="#d6dae3" xml:space="preserve">  İstisnalar:** * Cihaz **36 aydan az** yaşında ise, yalnızca aşağıdaki durumlardan biri geçerliyse</text>
+<text x="18" y="407" fill="#d6dae3" xml:space="preserve">  yenileme talep edilebilir: 1. So...</text>
+<text x="18" y="426" fill="#58b6ff" xml:space="preserve">[AGENT] Operations Agent (MCP)</text>
+<text x="18" y="445" fill="#d6dae3" xml:space="preserve">         -&gt; tool cagrisi: find_employee</text>
+<text x="18" y="464" fill="#4fd18b" xml:space="preserve">  [MCP] find_employee(query=&#x27;Mert Kaya&#x27;)</text>
+<text x="18" y="483" fill="#4fd18b" xml:space="preserve">[MCP TOOL] find_employee(Mert Kaya)</text>
+<text x="18" y="502" fill="#58b6ff" xml:space="preserve">[AGENT] Operations Agent (MCP)</text>
+<text x="18" y="521" fill="#d6dae3" xml:space="preserve">         -&gt; tool cagrisi: get_employee_assets</text>
+<text x="18" y="540" fill="#4fd18b" xml:space="preserve">  [MCP] get_employee_assets(employee_id=&#x27;E-1003&#x27;)</text>
+<text x="18" y="559" fill="#4fd18b" xml:space="preserve">[MCP TOOL] get_employee_assets(E-1003)</text>
+<text x="18" y="578" fill="#58b6ff" xml:space="preserve">[AGENT] Operations Agent (MCP)</text>
+<text x="18" y="597" fill="#d6dae3" xml:space="preserve">         -&gt; tool cagrisi: get_asset_failure_history</text>
+<text x="18" y="616" fill="#4fd18b" xml:space="preserve">  [MCP] get_asset_failure_history(asset_id=&#x27;AST-5004&#x27;, months=6)</text>
+<text x="18" y="635" fill="#4fd18b" xml:space="preserve">[MCP TOOL] get_asset_failure_history(AST-5004, months=6)</text>
+<text x="18" y="654" fill="#58b6ff" xml:space="preserve">[AGENT] Operations Agent (MCP)</text>
+<text x="18" y="673" fill="#d6dae3" xml:space="preserve">         -&gt; Mert Kaya&#x27;nın (E-1003) cihaz yenileme hakkı için gerekli operasyonel veriler toplanmıştır:</text>
+<text x="18" y="692" fill="#d6dae3" xml:space="preserve">  * **Cihaz Bilgisi:** AST-5004 (Lenovo ThinkPad T14), 25 yaşında, garanti durumu devam ediyor. *</text>
+<text x="18" y="711" fill="#d6dae3" xml:space="preserve">  **Arıza Geçmişi:** Son 6 ayda top...</text>
+<text x="18" y="730" fill="#58b6ff" xml:space="preserve">[AGENT] Decision Agent</text>
+<text x="18" y="749" fill="#d6dae3" xml:space="preserve">         -&gt; tool cagrisi: create_ticket</text>
+<text x="18" y="787" fill="#3b4256" xml:space="preserve">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</text>
+<text x="18" y="806" fill="#ff6d6d" xml:space="preserve"> ONAY GEREKIYOR - asagidaki yazma islemi kullanici onayi bekliyor</text>
+<text x="18" y="825" fill="#3b4256" xml:space="preserve">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</text>
+<text x="18" y="844" fill="#d6dae3" xml:space="preserve"> Tool: create_ticket</text>
+<text x="18" y="863" fill="#d6dae3" xml:space="preserve">   employee_id     : E-1003</text>
+<text x="18" y="882" fill="#d6dae3" xml:space="preserve">   category        : talep</text>
+<text x="18" y="901" fill="#d6dae3" xml:space="preserve">   subject         : Mert Kaya için tekrarlayan donanım arızası nedeniyle cihaz yenileme talebi</text>
+<text x="18" y="920" fill="#d6dae3" xml:space="preserve">   priority        : normal</text>
+<text x="18" y="939" fill="#d6dae3" xml:space="preserve">   assigned_group  : BT-Donanim</text>
+<text x="18" y="958" fill="#d6dae3" xml:space="preserve">   asset_id        : AST-5004</text>
+<text x="18" y="977" fill="#3b4256" xml:space="preserve">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</text>
+<text x="18" y="996" fill="#d6dae3" xml:space="preserve"> Onayliyor musunuz? (onay / iptal): onay</text>
+<text x="18" y="1015" fill="#ff6d6d" xml:space="preserve">[ONAY] Kullanici onayladi, aksiyon uygulaniyor.</text>
+<text x="18" y="1034" fill="#4fd18b" xml:space="preserve">  [MCP] create_ticket(employee_id=&#x27;E-1003&#x27;, category=&#x27;talep&#x27;, subject=&#x27;Mert Kaya için tekrarlayan</text>
+<text x="18" y="1053" fill="#d6dae3" xml:space="preserve">  donanım arızası nedeniyle cihaz yenileme talebi&#x27;, priority=&#x27;normal&#x27;, assigned_group=&#x27;BT-Donanim&#x27;,</text>
+<text x="18" y="1072" fill="#d6dae3" xml:space="preserve">  asset_id=&#x27;AST-5004&#x27;)</text>
+<text x="18" y="1091" fill="#4fd18b" xml:space="preserve">[MCP TOOL] create_ticket(E-1003, talep, &#x27;Mert Kaya için tekrarlayan donanım arızası nedeniyle cihaz</text>
+<text x="18" y="1110" fill="#d6dae3" xml:space="preserve">  yenileme talebi&#x27;)</text>
+<text x="18" y="1129" fill="#58b6ff" xml:space="preserve">[AGENT] Reporter Agent</text>
+<text x="18" y="1167" fill="#9ae6b4" xml:space="preserve">Asistan: Karar: uygun</text>
+<text x="18" y="1205" fill="#d6dae3" xml:space="preserve">Gerekce:</text>
+<text x="18" y="1224" fill="#d6dae3" xml:space="preserve">- Politika kuralı: Son 6 ay içinde en az 2 adet donanım arızası olması durumunda yenileme yapılabilir;</text>
+<text x="18" y="1243" fill="#d6dae3" xml:space="preserve">  Mert Kaya&#x27;nın cihazı (AST-5004) bu kriteri karşılıyor.</text>
+<text x="18" y="1262" fill="#d6dae3" xml:space="preserve">- Çalışanın gerçek verisi: Cihaz yaşı 25 ay, son 6 ayda 2 adet arıza kaydı var (TKT-9001, TKT-9002).</text>
+<text x="18" y="1300" fill="#d6dae3" xml:space="preserve">Yapılan işlem:</text>
+<text x="18" y="1319" fill="#d6dae3" xml:space="preserve">- Talep açıldı: TKT-9006, kategori talep, öncelik normal, atanan grup BT-Donanim.</text>
+<text x="18" y="1357" fill="#d6dae3" xml:space="preserve">Sonraki adım:</text>
+<text x="18" y="1376" fill="#d6dae3" xml:space="preserve">- İşlem tamamlandı, talebi takip etmeniz yeterlidir.</text>
+</svg>

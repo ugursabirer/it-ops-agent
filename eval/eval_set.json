@@ -1,0 +1,116 @@
+[
+  {
+    "id": "politika-yenileme-suresi",
+    "soru": "Dizustu bilgisayar kac yilda bir yenilenir?",
+    "beklenen_kulvar": "politika",
+    "beklenen_ifadeler": [
+      "36"
+    ],
+    "yasak_ifadeler": [],
+    "aciklama": "Politika kulvari dogru esigi dokumandan getirmeli."
+  },
+  {
+    "id": "politika-parola",
+    "soru": "Kurumsal parolam en az kac karakter olmali ve ne siklikla degisir?",
+    "beklenen_kulvar": "politika",
+    "beklenen_ifadeler": [
+      "14",
+      "90"
+    ],
+    "yasak_ifadeler": [],
+    "aciklama": "Guvenlik vector store'undan iki sayisal esik birlikte gelmeli."
+  },
+  {
+    "id": "politika-usb",
+    "soru": "USB bellek kullanimi serbest mi?",
+    "beklenen_kulvar": "politika",
+    "beklenen_ifadeler": [
+      "kapal"
+    ],
+    "yasak_ifadeler": [],
+    "aciklama": "Varsayilan olarak kapali oldugu bilgisi dokumanda var."
+  },
+  {
+    "id": "operasyon-zimmet",
+    "soru": "E-1003'un zimmetindeki cihazlar neler?",
+    "beklenen_kulvar": "operasyon",
+    "beklenen_ifadeler": [
+      "ThinkPad"
+    ],
+    "yasak_ifadeler": [],
+    "aciklama": "MCP uzerinden zimmet sorgusu."
+  },
+  {
+    "id": "operasyon-yetki-yok",
+    "soru": "Mert Kaya'nin VPN erisim yetkisi var mi?",
+    "beklenen_kulvar": "operasyon",
+    "beklenen_ifadeler": [
+      "mert"
+    ],
+    "yasak_ifadeler": [
+      "yetkisi var",
+      "erişimi var",
+      "erisimi var"
+    ],
+    "aciklama": "Yetkisi olmayan calisan icin agent var olmayan bir yetki bildirmemeli."
+  },
+  {
+    "id": "operasyon-stok",
+    "soru": "Yedek dizustu bilgisayar stogumuz ne durumda?",
+    "beklenen_kulvar": "operasyon",
+    "beklenen_ifadeler": [
+      "4"
+    ],
+    "yasak_ifadeler": [],
+    "aciklama": "Dell Latitude 5440 icin 4 adet stok var."
+  },
+  {
+    "id": "talep-istisna-uygun",
+    "soru": "Mert Kaya'nin laptopu surekli kapaniyor. Cihazini yenileme hakki var mi?",
+    "beklenen_kulvar": "talep",
+    "beklenen_ifadeler": [
+      "36"
+    ],
+    "yasak_ifadeler": [
+      "uygun deg",
+      "uygun değ"
+    ],
+    "aciklama": "25 aylik cihaz 36 ay kuralini saglamiyor ama 6 ayda 2 ariza istisnasi gecerli: karar olumsuz olmamali."
+  },
+  {
+    "id": "talep-uygun-degil",
+    "soru": "Elif Demir yeni bir dizustu bilgisayar istiyor, hakki var mi?",
+    "beklenen_kulvar": "talep",
+    "beklenen_ifadeler": [
+      "36"
+    ],
+    "yasak_ifadeler": [
+      "TKT-"
+    ],
+    "aciklama": "19 aylik, garantili ve arizasiz cihaz: 36 ay kurali gosterilmeli ve uydurma talep numarasi uretilmemeli."
+  },
+  {
+    "id": "belirsiz-talep",
+    "soru": "Yeni bilgisayar istiyorum.",
+    "beklenen_kulvar": null,
+    "beklenen_ifadeler": [
+      "kimli"
+    ],
+    "yasak_ifadeler": [
+      "TKT-"
+    ],
+    "aciklama": "Calisan kimligi bilinmedigi icin talep acilmamali, kimlik sorulmali."
+  },
+  {
+    "id": "olmayan-calisan",
+    "soru": "E-9999'un zimmetindeki cihazlari listele.",
+    "beklenen_kulvar": "operasyon",
+    "beklenen_ifadeler": [
+      "bulunamad"
+    ],
+    "yasak_ifadeler": [
+      "AST-"
+    ],
+    "aciklama": "Olmayan kimlik icin temiz bir 'bulunamadi' cevabi beklenir."
+  }
+]
